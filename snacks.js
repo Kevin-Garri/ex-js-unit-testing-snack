@@ -7,7 +7,12 @@ function createSlug(titolo) {
   return titolo.toLowerCase();
 }
 
+function average(numeri) {
+  return numeri.reduce((acc, numero) => acc + numero, 0) / numeri.length;
+}
+
 module.exports = {
   getInitials,
   createSlug,
+  average,
 }
