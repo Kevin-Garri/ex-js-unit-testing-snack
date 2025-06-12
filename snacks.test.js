@@ -1,4 +1,4 @@
-const { getInitials, createSlug, average, isPalindrome } = require("./snacks.js");
+const { getInitials, createSlug, average, isPalindrome, findPostById } = require("./snacks.js");
 
 
 /*Snack 1
@@ -57,3 +57,16 @@ Crea un array di oggetti posts, in cui ogni oggetto ha le proprietà id, title e
 Creare un test che verifichi le seguenti descrizioni:
 "La funzione findPostById restituisce il post corretto dato l’array di post e l’id"
 Creare uno o più test aggiuntivi che controllino che la struttura dati passati sia conforme (ogni post ha le proprietà id, title e slug, viene passato un id numerico).*/
+const posts = [
+  { id: 1, title: "Intro js", slug: "intro-js" },
+  { id: 2, title: "Array methods", slug: "Array-methods" }
+];
+
+
+
+test(`La funzione findPostById restituisce il post corretto dato l'array di post e l'id`, () => {
+  expect(findPostById(posts, 2)).toEqual({ id: 2, title: "Array methods", slug: "Array-methods" });
+  expect(findPostById(posts, 3)).toBe(null);
+  expect(() => findPostById(posts, "ciao")).toThrow('"ciao" non è un id');
+  expect(() => findPostById([34, 67], 2)).toThrow('array non è corretto');
+});
